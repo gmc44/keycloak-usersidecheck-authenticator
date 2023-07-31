@@ -8,9 +8,8 @@
       }
       </style>
       <h2>Analyse de votre réseau en cours...</h2>
-      <#--  <p id="result"></p>
-      <p>URL1=${url1}</p>
-      <p>param1=${param1}</p>  -->
+      <p id="result"></p>
+      <#--  <p>URL1=${url1}, uid=${attr}</p>  -->
       <form id="kc-form-client-request" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
           <input id="requestresult" name="requestresult" type="hidden"/>
       </form>
@@ -20,7 +19,7 @@
 
           async function urlExists(url) {
               try {
-                  const response = await fetch(url, { method: "${method}" });
+                  const response = await fetch(url+"${attr}", { method: "${method}" });
                   const text = await response.text();
                   return text;
               } catch (error) {
